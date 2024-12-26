@@ -32,7 +32,6 @@ secretCertPath: "secretSsl"
 cloudbeaverTE:
   replicaCount: 1
   image: dbeaver/cloudbeaver-te
-  # storageClassName: ... # in case we want a specific storage class for this workload
 cloudbeaverDC:
   replicaCount: 1
   image: dbeaver/cloudbeaver-dc
