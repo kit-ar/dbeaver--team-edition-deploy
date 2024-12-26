@@ -11,6 +11,16 @@ spec:
     - ReadWriteOnce
   {{- if eq .Values.cloudProvider "aws" }}
   storageClassName: ebs-sc
+  {{- else }}
+    {{- if .Values.backend.cloudbeaver_db_sc_name }}
+  # adding support for custom storage class (independent of whether we declare we are in a specific cloud or not)
+  storageClassName: {{ .Values.backend.cloudbeaver_db_sc_name }}
+      {{- else }}
+        {{- if .Values.storageClassName }}
+  storageClassName: {{ .Values.storage.storageClassName }}
+        {{- end }}
+      {{- end }}
+    {{- end }}
   {{- end }}
   resources:
     requests:

@@ -10,6 +10,16 @@ spec:
     - ReadWriteMany
   {{- if or (eq .Values.cloudProvider "gcp") (eq .Values.cloudProvider "aws") (eq .Values.cloudProvider "azure") }}
   storageClassName: {{ .Values.storage.storageClassName }}
+  {{- else }}
+    {{- if .Values.cloudbeaverQM.storageClassName }}
+  # adding support for custom storage class (independent of whether we declare we are in a specific cloud or not)
+  storageClassName: {{ .Values.cloudbeaverQM.storageClassName }}
+      {{- else }}
+        {{- if .Values.storageClassName }}
+  storageClassName: {{ .Values.storage.storageClassName }}
+        {{- end }}
+      {{- end }}
+    {{- end }}
   {{- end }}
   resources:
     requests:

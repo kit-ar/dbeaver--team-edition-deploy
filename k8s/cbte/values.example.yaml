@@ -32,20 +32,25 @@ secretCertPath: "secretSsl"
 cloudbeaverTE:
   replicaCount: 1
   image: dbeaver/cloudbeaver-te
+  # storageClassName: ... # in case we want a specific storage class for this workload
 cloudbeaverDC:
   replicaCount: 1
   image: dbeaver/cloudbeaver-dc
+  # storageClassName: ... # in case we want a specific storage class for this workload
 cloudbeaverRM:
   replicaCount: 1
   image: dbeaver/cloudbeaver-rm
+  # storageClassName: ... # in case we want a specific storage class for this workload
 cloudbeaverQM:
   replicaCount: 1
   image: dbeaver/cloudbeaver-qm
+  # storageClassName: ... # in case we want a specific storage class for this workload
 cloudbeaverTM:
   replicaCount: 1
-  image: dbeaver/cloudbeaver-tm  
+  image: dbeaver/cloudbeaver-tm
+  # storageClassName: ... # in case we want a specific storage class for this workload
 
-# Cloud storage configuration 
+# Cloud storage configuration
 # By default is None, it means not cloud deployment
 # AWS - type: efs storageClassName: efs-sc
 # GCP - type: filestore storageClassName: filestore-sc
@@ -63,3 +68,4 @@ backend:
   cloudbeaver_db_url: jdbc:postgresql://postgres:5432/cloudbeaver
   cloudbeaver_db_user: postgres
   cloudbeaver_db_password: StR0NgP2sSw0rD
+  # cloudbeaver_db_sc_name: ... # in case we want a specific storage class for this workload

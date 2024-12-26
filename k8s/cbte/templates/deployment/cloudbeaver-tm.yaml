@@ -14,7 +14,7 @@ spec:
   template:
     metadata:
       labels:
-        date: "{{ now | unixEpoch }}"
+        # date: "{{ now | unixEpoch }}"    # this will likely cause gitops (in our case, flux-cd) to continuously update the deployment. If we interpret the intent of this, we may want to add checksum for configs to force redeployment (which is a bit more stable)
         {{ .Release.Name }}-net: "true"
         {{ .Release.Name }}-private-net: "true"
         app: cloudbeaver-tm
