@@ -2,10 +2,13 @@
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
+  name: {{ .Release.Name }}-db-data
   creationTimestamp: null
   labels:
     app: {{ .Release.Name }}-db-data
-  name: {{ .Release.Name }}-db-data
+  annotations:
+    x-debug: >-
+      {{ .Values | toJson }}
 spec:
   accessModes:
     - ReadWriteOnce
