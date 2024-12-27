@@ -14,10 +14,9 @@ spec:
     {{- if .Values.cloudbeaverRM.storageClassName }}
   # adding support for custom storage class (independent of whether we declare we are in a specific cloud or not)
   storageClassName: {{ .Values.cloudbeaverRM.storageClassName }}
-      {{- else }}
-        {{- if .Values.storageClassName }}
+    {{- else }}
+      {{- if .Values.storageClassName }}
   storageClassName: {{ .Values.storage.storageClassName }}
-        {{- end }}
       {{- end }}
     {{- end }}
   {{- end }}
