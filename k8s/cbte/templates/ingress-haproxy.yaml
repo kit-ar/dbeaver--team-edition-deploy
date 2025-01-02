@@ -5,7 +5,7 @@ kind: Ingress
 metadata:
   name: ingress-{{ .Release.Name }}
   annotations:
-    haproxy-ingress.github.io/ingress.class: "haproxy"
+    haproxy-ingress.github.io/ingress.class: {{- .Values.ingressClassName | default "haproxy" }}
     {{- if eq "https" .Values.httpScheme }}
     haproxy-ingress.github.io/ssl-redirect: "true"
     {{- end }}
@@ -57,5 +57,5 @@ spec:
             service:
               name: cloudbeaver-qm
               port:
-                number: 8973                
+                number: 8973
 {{ end }}
