@@ -36,6 +36,7 @@ spec:
             - name: CLOUDBEAVER_DC_BACKEND_DB_PASSWORD
               valueFrom:
                 secretKeyRef:
+                  # TODO: change to check if existingSecret_dbPass is defined
                   name: {{ .Release.Name }}-db-pass
                   key: postgres-pass
             - name: CLOUDBEAVER_QM_BACKEND_DB_URL
@@ -45,6 +46,7 @@ spec:
             - name: CLOUDBEAVER_QM_BACKEND_DB_PASSWORD
               valueFrom:
                 secretKeyRef:
+                  # TODO: change to check if existingSecret_dbPass is defined
                   name: {{ .Release.Name }}-db-pass
                   key: postgres-pass
             - name: CLOUDBEAVER_TM_BACKEND_DB_URL
@@ -54,6 +56,7 @@ spec:
             - name: CLOUDBEAVER_TM_BACKEND_DB_PASSWORD
               valueFrom:
                 secretKeyRef:
+                  # TODO: change to check if existingSecret_dbPass is defined
                   name: {{ .Release.Name }}-db-pass
                   key: postgres-pass
             - name: CLOUDBEAVER_DC_SERVER_URL
@@ -87,11 +90,13 @@ spec:
           projected:
             sources:
               - secret:
+                # TODO: change to use existingSecret_crossServiceSSL if defined
                   name: {{ .Release.Name }}-crossservice-ssl
                   items:
                     - key: tls.key
                       path: dc-key.key
               - secret:
+                # TODO: change to use existingSecret_secretSSL if defined
                   name: {{ .Release.Name }}-secret-ssl
                   items:
                     - key: tls.crt

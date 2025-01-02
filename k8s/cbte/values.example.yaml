@@ -25,6 +25,10 @@ httpsCertPath: "ingressSsl"
 # Domain certificates must equal cloudbeaverBaseDomain
 certificateARN: ""
 
+# TODO: change chart to use the following
+# existingSecret_ingressTLS: ""
+# existingSecret_secretSSL: ""
+# existingSecret_crossServiceSSL: ""
 
 crossServiceCertPath: "crossSsl"
 secretCertPath: "secretSsl"

@@ -32,6 +32,7 @@ spec:
             - name: POSTGRES_PASSWORD
               valueFrom:
                 secretKeyRef:
+                  # TODO: change to check if existingSecret_dbPass is defined
                   name: {{ .Release.Name }}-db-pass
                   key: postgres-pass
           ports:

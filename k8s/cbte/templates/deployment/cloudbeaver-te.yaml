@@ -46,6 +46,7 @@ spec:
       volumes:
         - name: cross-ssl-cert
           secret:
+            # TODO: change to use existingSecret_crossServiceSSL if defined
             secretName: {{ .Release.Name }}-crossservice-ssl
             items:
               - key: tls.crt
